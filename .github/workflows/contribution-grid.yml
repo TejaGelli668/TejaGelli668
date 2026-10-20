@@ -32,9 +32,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # snk writes dist/ as root, so publish from a copy the runner user owns.
       - name: Publish to the output branch
-        working-directory: dist
         run: |
+          mkdir -p "$RUNNER_TEMP/out" && cp -r dist/. "$RUNNER_TEMP/out" && cd "$RUNNER_TEMP/out"
           git init -q -b output
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
