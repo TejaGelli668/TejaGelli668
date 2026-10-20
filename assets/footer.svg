@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="140" viewBox="0 0 1200 140" role="img" aria-labelledby="tg-foot-title">
+  <title id="tg-foot-title">Thanks for stopping by</title>
+  <style>
+    .flow-a { stroke-dasharray: 6 14; animation: tg-foot-flow 7s linear infinite; }
+    .flow-b { stroke-dasharray: 2 10; animation: tg-foot-flow 11s linear infinite reverse; }
+    .label { font: 600 13px ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; fill: #9BA1B4; letter-spacing: 4px; }
+    .pulse { transform-origin: 600px 74px; animation: tg-foot-pulse 3s ease-in-out infinite; }
+    @keyframes tg-foot-flow { to { stroke-dashoffset: -200; } }
+    @keyframes tg-foot-pulse { 0%, 100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.25); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="tg-foot-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22D3EE" stop-opacity="0"/>
+      <stop offset=".25" stop-color="#22D3EE"/>
+      <stop offset=".5" stop-color="#7C5CFF"/>
+      <stop offset=".75" stop-color="#F472B6"/>
+      <stop offset="1" stop-color="#F472B6" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="tg-foot-glow" x="-10%" y="-100%" width="120%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <mask id="tg-foot-gap">
+      <rect width="1200" height="140" fill="#FFFFFF"/>
+      <rect x="430" y="56" width="340" height="36" rx="18" fill="#000000"/>
+    </mask>
+  </defs>
+  <g mask="url(#tg-foot-gap)" fill="none" stroke-linecap="round">
+    <path class="flow-a" d="M0 70 C150 30 300 110 450 70 S750 30 900 70 S1150 110 1200 70" stroke="url(#tg-foot-line)" stroke-width="1.6" filter="url(#tg-foot-glow)"/>
+    <path class="flow-b" d="M0 78 C160 112 320 40 480 78 S800 112 960 78 S1160 44 1200 78" stroke="url(#tg-foot-line)" stroke-opacity=".6" stroke-width="1.2"/>
+  </g>
+  <rect x="440" y="58" width="320" height="32" rx="16" fill="#0B0B12" stroke="#FFFFFF" stroke-opacity=".1"/>
+  <circle class="pulse" cx="466" cy="74" r="4" fill="#22D3EE" style="transform-origin: 466px 74px"/>
+  <text class="label" x="612" y="79" text-anchor="middle">THANKS FOR STOPPING BY</text>
+</svg>

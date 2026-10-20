@@ -1,0 +1,43 @@
+# Renders my real contribution graph as an animated SVG and publishes it to the
+# `output` branch, which README.md embeds. Runs daily so the graph stays current.
+name: Contribution grid
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/contribution-grid.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: contribution-grid
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Render contribution grid
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/contribution-grid-dark.svg?palette=github-dark&color_snake=#22D3EE&color_dots=#161b22,#2b2160,#4a3aa8,#7C5CFF,#22D3EE
+            dist/contribution-grid.svg?palette=github-light&color_snake=#7C5CFF&color_dots=#ebedf0,#d9d0ff,#a995ff,#7C5CFF,#4b2fd6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to the output branch
+        working-directory: dist
+        run: |
+          git init -q -b output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -q -m "Update contribution grid"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" output
