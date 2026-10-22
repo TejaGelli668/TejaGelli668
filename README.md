@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://portfolio-beta-sepia-62.vercel.app"><img src="./assets/btn-portfolio.svg" height="36" alt="Portfolio"></a>&nbsp;
+  <a href="https://tejagelli.vercel.app"><img src="./assets/btn-portfolio.svg" height="36" alt="Portfolio"></a>&nbsp;
   <a href="https://www.linkedin.com/in/gelliteja1998/"><img src="./assets/btn-linkedin.svg" height="36" alt="LinkedIn"></a>&nbsp;
   <a href="mailto:gelliteja1998@gmail.com"><img src="./assets/btn-email.svg" height="36" alt="Email"></a>
 </p>
